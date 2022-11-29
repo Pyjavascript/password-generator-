@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<title>Random password generator</title>
+</head>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
+*{
+margin:0;
+padding:0;
+font-family: 'Kavoon', cursive;
+}
+body{
+background-image: linear-gradient( 160.6deg,  rgba(61,245,167,1) 11.2%, rgba(9,111,224,1) 91.1% );
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.box{
+background:rgba(255,255,255,1);
+height:230px;
+width:320px;
+border-radius:15px;
+box-shadow:2px 3px 15px rgba(255,255,255,.1),
+          -6px -5px 5px rgba(255,255,255,.5);
+
+text-align:center;
+}
+.box h3{
+font-size:medium;
+color:rgba(0,0,0,.5);
+text-shadow:2px 2px 0px #ddf;
+margin-top:15px;
+}
+input{
+padding:10px 20px;
+margin-top:30px;
+outline:none;
+border:none;
+border-radius:5px;
+box-shadow:inset 2px 3px 10px rgba(0,0,0,.1),
+           inset 1px 2px 10px rgba(255,255,255,.1);
+}
+#button {
+font-size: 15px;
+margin-top: 40px;
+margin-left:20px;
+width: 120px;
+height: 45px;
+text-align: center;
+background:#fff;
+display: flex;
+color: rgb(0,0,0);
+justify-content: center;
+align-items: center;
+cursor: pointer;
+border:dashed 2.8px #000;
+border-radius: 5px;
+}
+.btn2{
+
+}
+
+#button:active {
+color: white;
+background-color: black;
+}
+</style>
+<body>
+<div class="box" >
+<h3>Password Generator</h3>
+<input type="text" placeholder="Create password" id="password" readonly="readonly" >
+<table>
+<th><div id="button" class="btn1"onclick="genPassword()">Generate</div></th>
+<th><a  id="button" class="btn2" onclick="copyPassword()">Copy</a></th>
+</table>
+</div>
+<script type="text/javascript">
+var password=document.getElementById("password");
+
+ function genPassword() {
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
+    var password = "";
+ for (var i = 0; i <= passwordLength; i++) {
+   var randomNumber = Math.floor(Math.random() * chars.length);
+   password += chars.substring(randomNumber, randomNumber +1);
+  }
+        document.getElementById("password").value = password;
+ }
+
+function copyPassword() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  document.execCommand("copy");  
+}
+</script>
+</body>
+</html>
